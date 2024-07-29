@@ -7,7 +7,6 @@ import ShortUrl from "../../helpers/ShortUrl";
 
 export const shortUrlGenerate = async (req: Request) => {
   const { url } = req.body;
-  console.log(req.body);
   if (!url) {
     throw new HttpError("Invalid URL!", 400);
   }

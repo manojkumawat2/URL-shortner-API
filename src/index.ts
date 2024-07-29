@@ -2,6 +2,7 @@ import express, { Express, Request, Response } from "express";
 import dotenv from "dotenv";
 import router from "./routes";
 import bodyParser from "body-parser";
+import cors from "cors";
 import { getRedirectionUrl } from "./services/url";
 
 dotenv.config();
@@ -9,7 +10,9 @@ dotenv.config();
 const app: Express = express();
 const port = process.env.PORT;
 
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(cors());
 
 app.use("/api/v1", router);
 app.get("/:shortId", (req, res) => {
